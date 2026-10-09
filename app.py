@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
@@ -13,6 +13,14 @@ PRODUCTS = [
 @app.route("/")
 def home():
     return render_template("index.html", products=PRODUCTS)
+
+
+@app.route("/product/<int:product_id>")
+def product_detail(product_id):
+    for product in PRODUCTS:
+        if product["id"] == product_id:
+            return render_template("product.html", product=product)
+    abort(404)
 
 
 if __name__ == "__main__":

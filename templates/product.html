@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopNest</title>
+    <title>{{ product.name }} - ShopNest</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,49 +16,43 @@
             padding: 20px;
             text-align: center;
         }
+        header a {
+            color: white;
+            text-decoration: none;
+        }
         main {
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 30px 20px;
         }
-        h2 {
-            text-align: center;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-        .card {
+        .detail {
             background: white;
             border-radius: 8px;
-            padding: 20px;
+            padding: 30px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-        .card h3 {
-            margin-top: 0;
         }
         .price {
             color: #b12704;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 22px;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #232f3e;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>ShopNest</h1>
+        <h1><a href="/">ShopNest</a></h1>
     </header>
     <main>
-        <h2>Our Products</h2>
-        <div class="grid">
-            {% for product in products %}
-            <div class="card">
-                <h3><a href="/product/{{ product.id }}">{{ product.name }}</a></h3>
-                <p>{{ product.description }}</p>
-                <p class="price">৳ {{ product.price }}</p>
-            </div>
-            {% endfor %}
+        <a class="back" href="/">&larr; Back to products</a>
+        <div class="detail">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p class="price">৳ {{ product.price }}</p>
         </div>
     </main>
 </body>
