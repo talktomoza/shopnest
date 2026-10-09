@@ -68,12 +68,18 @@
                     <th>Product</th>
                     <th>Qty</th>
                     <th>Price</th>
+                    <th></th>
                 </tr>
                 {% for item in items %}
                 <tr>
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>৳ {{ item.subtotal }}</td>
+                    <td>
+    <form method="post" action="/remove-from-cart/{{ item.product.id }}">
+        <button type="submit">Remove</button>
+    </form>
+</td>
                 </tr>
                 {% endfor %}
             </table>

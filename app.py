@@ -59,5 +59,12 @@ def cart_page():
     return render_template("cart.html", items=items, total=total, cart_count=cart_count)
 
 
+@app.route("/remove-from-cart/<int:product_id>", methods=["POST"])
+def remove_from_cart(product_id):
+    cart = session.get("cart", {})
+    cart.pop(str(product_id), None)
+    session["cart"] = cart
+    return redirect(url_for("cart_page"))
+
 if __name__ == "__main__":
     app.run(debug=True)
