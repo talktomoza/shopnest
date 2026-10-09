@@ -41,6 +41,14 @@
             margin-bottom: 20px;
             color: #232f3e;
         }
+        .btn {
+            background: #ffd814;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -53,6 +61,9 @@
             <h2>{{ product.name }}</h2>
             <p>{{ product.description }}</p>
             <p class="price">৳ {{ product.price }}</p>
+            <form method="post" action="/add-to-cart/{{ product.id }}">
+                <button class="btn" type="submit">Add to Cart</button>
+            </form>
         </div>
     </main>
 </body>
